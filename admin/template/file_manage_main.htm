@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>"/>
+            <title>文件管理器</title>
+            <link href="style/common.css" rel="stylesheet" type="text/css"/>
+            <style>
+                .linerow{border-bottom: 1px solid #CBD8AC;height:24px}
+                table tr td{
+                    padding-left: 10px;
+                }
+                table tr td img{
+                    margin-right: 4px;
+                }
+            </style>
+    </head>
+    <body>
+        <div class="main">
+            <table width='100%' border='0' cellspacing='1' cellpadding='2' align='center' style="background:#cfcfcf;">
+                <tr class="td_title" height="32">
+                    <td style="padding-left:10px;"><b>文件管理系统-列表式</b></td>
+                </tr>
+            </table>
+            <table width='100%' border='0' cellspacing='1' cellpadding='2' align='center' style="background:#cfcfcf; margin-top: 4px;">
+                <tr class="td_title" height="28" align="center">
+                    <td width="28%"><b>文件名</b></td>
+                    <td width="16%"><b>文件大小</b></td>
+                    <td width="22%"><b>最后修改时间</b></td>
+                    <td width="34%"><b>操作</b></td>
+                </tr>
+                <?php
+                foreach ($dirs as $dir) {
+                echo $dir;
+                }
+                foreach ($files as $file) {
+                echo $file;
+                }
+                ?>
+                <tr class="tr_hui">
+                    <td colspan="4" height='26'>
+                        <a href='file_manage_main.php'>[根目录]</a>
+                        &nbsp;
+                        <a href='file_manage_view.php?fmdo=newfile&activepath=<?php echo urlencode($activepath)?>'>[新建文件]</a>
+                        &nbsp;
+                        <a href='file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>'>[新建目录]</a>
+                        &nbsp;
+                        <a href='file_manage_view.php?fmdo=upload&activepath=<?php echo urlencode($activepath)?>'>[文件上传]</a>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

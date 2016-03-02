@@ -1,0 +1,1 @@
+INSERT INTO `lulin_admin` VALUES('1','10','admin','2e3e73241ac899175428','admin','','','0','1386061751','192.168.1.1');

@@ -1,0 +1,7 @@
+INSERT INTO `lulin_pano_spotstyle` VALUES('1','1','前进','/require/vrpano/main/spot/spot1.png');
+INSERT INTO `lulin_pano_spotstyle` VALUES('2','2','放大镜','/require/vrpano/main/spot/spot2.png');
+INSERT INTO `lulin_pano_spotstyle` VALUES('3','1','左拐','/require/vrpano/main/spot/spot3.png');
+INSERT INTO `lulin_pano_spotstyle` VALUES('4','1','右拐','/require/vrpano/main/spot/spot4.png');
+INSERT INTO `lulin_pano_spotstyle` VALUES('5','1','前进箭头','/require/vrpano/main/spot/spot5.png');
+INSERT INTO `lulin_pano_spotstyle` VALUES('6','2','驻点1','/require/vrpano/main/spot/spot6.png');
+INSERT INTO `lulin_pano_spotstyle` VALUES('7','2','驻点2','/require/vrpano/main/spot/spot7.png');

@@ -1,0 +1,5 @@
+INSERT INTO `lulin_sysconfig` VALUES('1','cfg_basehost','站点根网址','1','string','http://quanjing.lywww.com');
+INSERT INTO `lulin_sysconfig` VALUES('2','cfg_webname','网站名称','1','string','全景通360VR');
+INSERT INTO `lulin_sysconfig` VALUES('3','cfg_cookie_encode','cookie密钥','2','string','XhFTr9594N');
+INSERT INTO `lulin_sysconfig` VALUES('4','cfg_cmspath','CMS目录','1','string','');
+INSERT INTO `lulin_sysconfig` VALUES('5','cfg_upload_size','上传文件大小限制（kb）','2','number','1024000');

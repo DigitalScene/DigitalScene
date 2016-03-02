@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>全景修改</title>
+        <link href="style/common.css" rel="stylesheet" type="text/css"/>
+        <link href="style/ui/jquery.ui.all.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="uploader/uploader.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                onoroff();
+                $("#musicfileup").uploader("audio", "musicdata","<?php echo $cfg_cmspath; ?>");
+            });
+            function musicdata(data){
+                $("#musicfile").val(data);
+            }
+            
+            function checksub() {
+                var title = $("#panoname").val();
+                if (title == "") {
+                    alert("请填写项目题目");
+                    return false;
+                } else {
+                    $(".loginbox").show();
+                    $(".loginbox").css("margin-top", $(window).scrollTop() + 120 + "px");
+                    return true;
+                }
+            }
+            function licenseadd(){
+                var html = "";
+                var len = $(".licbox").length;
+                html += '<tr class="tr_white" height="30">';
+                html += '<td style="text-align: center;"><input type="text" class="licbox" style="width:97%; margin: 0px;"  name="license1[]"/></td>';
+                html += '<td style="text-align: center;"><input type="text" style="width:97%; margin: 0px;"  name="license2[]"/></td>';
+                html += '<td style="text-align: center;"><input type="checkbox" value="1" name="license3['+len+']" /></td>';
+                html += '<td style="text-align: center;"><input type="button" class="btn1" onclick="licensedel(this)" value="删除" /></td>';
+                html += '</tr>';
+                $("#licensebox").append(html);
+            }
+            function licensedel(me){
+                $(me).parent().parent().remove();
+            }
+            function onetian(n){
+                var k=n-1;
+                $(".tian").children(".box").removeClass("me");
+                $(".tian").children(".box").eq(k).addClass("me");
+                $("#luopanalign").val(n);
+            }
+        </script>
+        <style type="text/css">
+            .tian{
+                width: 72px; height: 72px; overflow: hidden;
+            }
+            .tian .box{
+                width: 22px; height: 22px; overflow: hidden; float: left; _display: inline; background: url(images/vrpano/ding.jpg) no-repeat; cursor: pointer; margin: 1px;
+            }
+            .tian .box:hover{
+                background-image: url(images/vrpano/ding3.jpg);
+            }
+            .tian .box.me{
+                width: 22px; height: 22px; overflow: hidden; float: left; _display: inline; background: url(images/vrpano/ding2.jpg) no-repeat;
+            }
+            .tian .box.a1{
+                background-position: 0px 0px;
+            }
+            .tian .box.a2{
+                background-position: -22px 0px;
+            }
+            .tian .box.a3{
+                background-position: -44px 0px;
+            }
+            .tian .box.a4{
+                background-position: 0px -22px;
+            }
+            .tian .box.a5{
+                background-position: -22px -22px;
+            }
+            .tian .box.a6{
+                background-position: -44px -22px;
+            }
+            .tian .box.a7{
+                background-position: 0px -44px;
+            }
+            .tian .box.a8{
+                background-position: -22px -44px;
+            }
+            .tian .box.a9{
+                background-position: -44px -44px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="loginbox">
+            <div class="main">
+                <div class="line"></div>
+                <div class="text">正在提交中......</div>
+            </div>
+        </div>
+        <div class="main">
+            <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center">
+                <tr>
+                    <td height="30" class="td_title td_p8"><b>全景详细参数菜单：</b></td>
+                </tr>
+                <tr  class="tr_hui" >
+                    <td height="30" align="center">
+                        <?php echo panomenu($id,1); ?>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:4px;" bgcolor="#D6D6D6" align="center">
+                <tr>
+                    <td height="30"  class="td_title" style="border:1px solid #d6d6d6; border-bottom:none; padding: 0px 10px;">
+                        <b>全局参数设置</b>
+                    </td>
+                </tr>
+            </table>
+            <form name="form1" action="vrpano_edit.php" method="post" style="margin: 0px;" onsubmit="return checksub();">
+                <input type="hidden" name="dopost" value="save" />
+                <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" style="margin: 0px;">
+                    <tr class="tr_hui" height="30" align="center">
+                        <td width="20%">
+                            <b>名称</b>
+                        </td>
+                        <td width="35%">
+                            <b>参数</b>
+                        </td>
+                        <td width="45%">
+                            <b>备注</b>
+                        </td>
+                    </tr>    
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>全景项目名称：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="panoname" value="<?php echo $row['panoname']; ?>" />
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">项目名称</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>指针样式：</b>
+                        </td>
+                        <td class="td_p8">
+                            <table width="100%" border="0" cellpadding="2" cellspacing="1">
+                                <tr>
+                                    <td width="26px" height="36px"><input type="radio" name="cursor" value="0" <?php echo checkme($row['cursor'],0);?> ></input></td>
+                                    <td>无样式</td>
+                                </tr>
+                                <tr>
+                                    <td width="26px" height="36px"><input type="radio" name="cursor" value="1" <?php echo checkme($row['cursor'],1);?> ></td>
+                                    <td><img src="<?php echo $cfg_cmspath; ?>/require/vrpano/main/cursor/cursor1/cursor.png" /></td>
+                                </tr>
+                                <tr>
+                                    <td width="26px" height="36px"><input type="radio" name="cursor" value="2" <?php echo checkme($row['cursor'],2);?> ></td>
+                                    <td><img src="<?php echo $cfg_cmspath; ?>/require/vrpano/main/cursor/cursor2/cursor.png" /></td>
+                                </tr>
+                                <tr>
+                                    <td width="26px" height="36px"><input type="radio" name="cursor" value="3" <?php echo checkme($row['cursor'],3);?> ></td>
+                                    <td><img src="<?php echo $cfg_cmspath; ?>/require/vrpano/main/cursor/cursor3/cursor.png" /></td>
+                                </tr>
+                                <tr>
+                                    <td width="26px" height="36px"><input type="radio" name="cursor" value="4" <?php echo checkme($row['cursor'],4);?> ></td>
+                                    <td><img src="<?php echo $cfg_cmspath; ?>/require/vrpano/main/cursor/cursor4/cursor.png" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">全景中鼠标的样式</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>右键版权信息：</b>
+                        </td>
+                        <td colspan="2" style="padding: 6px;">
+                            <table id="licensebox" width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6">                                
+                                <tr class="tr_hui" height="32">
+                                    <td width="35%" class="td_title" style="text-align: center;">右键版权信息显示名称</td>
+                                    <td width="45%" class="td_title" style="text-align: center;">点击指向链接（不填则无链接）</td>
+                                    <td width="10%" class="td_title"style="text-align: center;">独立</td>
+                                    <td width="10%" class="td_title"style="text-align: center;">删除</td>
+                                </tr>   
+                                <?php echo $licensehtml; ?>
+                            </table>   
+                            <table width="100%" border="0" cellpadding="2" cellspacing="1" style="border:1px solid #d6d6d6; border-top: none;">
+                                <tr class="tr_white" height="24">
+                                    <td colspan="4"><input type="button" onclick="licenseadd();" class="btn1" value="添加一条" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="15">
+                        <td colspan="3"></td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>是否开启自动旋转：</b>
+                        </td>
+                        <td class="td_p8">
+                            <div class="onoff" target="openautorate" value="<?php echo $row['openautorate']; ?>"></div>
+                            <input type="hidden" id="openautorate" name="openautorate" value="<?php echo $row['openautorate']; ?>" />
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">全景开始旋转，切换图片也自动旋转</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>自动旋转最大速度：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="autoratespeed" value="<?php echo $row['autoratespeed']; ?>" />  （整数或小数均可）
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">自动旋转最大速度，数值越大，转速越快，默认是5</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>自动旋转加速度：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="autorateaddspeed" value="<?php echo $row['autorateaddspeed']; ?>" /> （整数或小数均可）
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">自动旋转慢慢增加的速度，数值越大，转速越快，默认是1.5</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>自动旋转等待时间：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="autoratetime" value="<?php echo $row['autoratetime']; ?>" /> 秒（整数或小数均可）
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">多久无操作，自动开始旋转。</span>
+                        </td>
+                    </tr>
+                    
+                    <tr class="tr_white" height="15">
+                        <td colspan="3"></td>
+                    </tr>
+                    
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>是否开启罗盘特效图：</b>
+                        </td>
+                        <td class="td_p8">
+                            <div class="onoff" target="openluopan" value="<?php echo $row['openluopan']; ?>"></div>
+                            <input type="hidden" id="openluopan" name="openluopan" value="<?php echo $row['openluopan']; ?>" />
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">罗盘特效图启动开关</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>罗盘特效图定位：</b>
+                        </td>
+                        <td style="padding: 6px;">
+                            <input type="hidden" name="luopanalign" id="luopanalign" value="<?php echo $row['luopanalign']; ?>" />
+                            <div class="tian">
+                                <div class="box a1 me" onclick="onetian(1);"></div>
+                                <div class="box a2" onclick="onetian(2);"></div>
+                                <div class="box a3" onclick="onetian(3);"></div>
+                                <div class="box a4" onclick="onetian(4);"></div>
+                                <div class="box a5" onclick="onetian(5);"></div>
+                                <div class="box a6" onclick="onetian(6);"></div>
+                                <div class="box a7" onclick="onetian(7);"></div>
+                                <div class="box a8" onclick="onetian(8);"></div>
+                                <div class="box a9" onclick="onetian(9);"></div>
+                            </div>
+                        </td>
+                        <td class="td_p8"></td>
+                    </tr>
+                    <?php echo $mapbassposscript; ?>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>罗盘特效图位置X：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="luopanx" value="<?php echo $row['luopanx']; ?>" /> 像素
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">罗盘特效图位置X</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>罗盘特效图位置Y：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="luopany" value="<?php echo $row['luopany']; ?>" /> 像素
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">罗盘特效图位置Y</span>
+                        </td>
+                    </tr>
+                    
+                    <tr class="tr_white" height="15">
+                        <td colspan="3"></td>
+                    </tr>
+                    
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>全局音效：</b>
+                        </td>
+                        <td class="td_p8">
+                            <div class="onoff" target="openallmusic" value="<?php echo $row['openallmusic']; ?>"></div>
+                            <input type="hidden" id="openallmusic" name="openallmusic" value="<?php echo $row['openallmusic']; ?>" />
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">全局音效，贯穿全境始终的音效，推荐当做背景音乐。</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>音频文件：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="musicfile" id="musicfile" value="<?php echo $row['musicfile']; ?>"/>
+                            <input type="button" id="musicfileup" class="btn1" value="点击上传"/>
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">音乐文件（mp3）</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>音频循环次数：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="musictimes" id="musictimes" value="<?php echo $row['musictimes']; ?>"/>
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">音频循环次数（0为无限循环）</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>音频音量大小：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="musicvalue" id="musicvalue" value="<?php echo $row['musicvalue']; ?>"/>
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">音频音量大小（0~1的小数）</span>
+                        </td>
+                    </tr>
+                    
+                    <tr class="tr_white" height="15">
+                        <td colspan="3"></td>
+                    </tr>
+                    
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>IPAD智能旋转：</b>
+                        </td>
+                        <td class="td_p8">
+                            <div class="onoff" target="openipadrate" value="<?php echo $row['openipadrate']; ?>"></div>
+                            <input type="hidden" id="openipadrate" name="openipadrate" value="<?php echo $row['openipadrate']; ?>" />
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">IPAD智能旋转，IPAD根据重力感应，获取用户旋转动作来控制全景。</span>
+                        </td>
+                    </tr>
+                    <tr class="tr_white" height="15">
+                        <td colspan="3"></td>
+                    </tr>
+                    <tr class="tr_white" height="36">
+                        <td  align="right">
+                            <b>压缩比率：</b>
+                        </td>
+                        <td class="td_p8">
+                            <input type="text" name="zip" value="<?php echo $row['zip']; ?>" /> 比例
+                        </td>
+                        <td class="td_p8">
+                            <span class="red">压缩比率（1~100的整数）</span>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" border="0" cellspacing="1" cellpadding="1"  style="border:1px solid #cfcfcf;border-top:none;">
+                    <tr>
+                        <td height="50" colspan="3">
+                            <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                <tr>
+                                    <td width="15%">&nbsp;</td>
+                                    <td width="15%"><input type="submit" class="btn1" value="确定"/></td>
+                                    <td width="15%"><input type="button" class="btn1" value="重置" onclick="document.form1.reset();"/></td>
+                                    <td width="55%"><input type="button" class="btn1" value="返回" onclick="window.location.href = '<?php echo $endurl; ?>';"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

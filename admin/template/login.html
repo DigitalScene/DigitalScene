@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   
+        <title>全景登录</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!-- <link href="style/login.css" rel="stylesheet" media="screen" type="text/css" /> -->
+        <link href="style/login.css" rel="stylesheet" media="screen" type="text/css" />
+        <script src="js/jquery.js" language="javascript" type="text/javascript"></script>
+        <script type="text/javascript">
+            function changeAuthCode() {
+                var num = new Date().getTime();
+                var rand = Math.round(Math.random() * 10000);
+                num = num + rand;
+                $('#ver_code').css('visibility', 'visible');
+                if ($("#vdimgck")[0]) {
+                    $("#vdimgck")[0].src = "../require/vdimgck.php?tag=" + num;
+                }
+                return false;
+            }
+            $(document).ready(function(){      
+                $("#userid").focus();
+                $("input").focus(function(){
+                    $(this).addClass("cheaked");
+                });
+                $("input").blur(function(){
+                    $(this).removeClass("cheaked");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="top">
+                <div class="logo"><img src="images/login/lg_logo.gif" /></div>
+                <div class="topmain"><a>授权查询</a>|<a>联系我们</a><span>咨询热线：<b>15588906777</b></span></div>
+            </div>
+            <div class="mid">
+                <form name="form1" method="post" action="login.php">
+                <!--dopost 在login.html 里面被赋值  -->
+                    <input type="hidden" name="dopost" value="login" />
+                    
+                    <input name='adminstyle' type='hidden' value='newdedecms' />
+                    <div class="mid_mian">
+                        <div class="logn">
+                            <div class="title">全景通登录</div>
+                            <div class="box">
+                                <table>
+                                    <tr>
+                                        <td style="text-align: right" width="60">用户名</td>
+                                        <td style="padding-left: 10px;"><input type="text" id="userid" name="userid" class="inputbox" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right" width="60">密&nbsp;&nbsp;&nbsp;码</td>
+                                        <td style="padding-left: 10px;"><input type="password" class="inputbox" name="pwd" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center;"><input class="btn1" value="" type="submit" /><input value="" onclick="form1.reset();" class="btn2" type="button" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="down">
+                <span>Copyright &copy; 2005-2013 www.ly139.com Inc. All Rights Reserved</span><a href="http://www.miibeian.gov.cn" target="_blank">鲁ICP鲁09067379号</a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var allheight = $(window).height();
+            var mtp = (allheight - 537) / 2 - 30;
+            if (mtp > 0) {
+                $(".main").css("margin-top", mtp + "px");
+            }
+            $(window).resize(function() {
+                var allheight = $(window).height();
+                var mtp = (allheight - 537) / 2 - 30;
+                if (mtp > 0) {
+                    $(".main").css("margin-top", mtp + "px");
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,2 @@
+INSERT INTO `lulin_controltype` VALUES('1','简洁模式','带有“仰视”、“俯视”、“左转”、“右转”、“全屏”功能，界面非常简洁，黑色半透明。');
+INSERT INTO `lulin_controltype` VALUES('2','经典模式','带有“仰视”、“俯视”、“左转”、“右转”、“全屏”功能。');

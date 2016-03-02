@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo $cfg_webname; ?>管理系统</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=100"/>
+        <link rel="stylesheet" type="text/css" href="style/index.css"/>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </head>
+    <body>        
+        <div id="top">
+            <div id="logo"></div>
+            <div id="topmain">
+                <span>亲，<?php echo $cuserLogin->getUserName(); ?>，欢迎您回来！</span>
+                <a href="exit.php">账号登出</a>
+            </div>
+        </div>
+        <div id="leftbox">
+            <?php creatMenuList($menuList); ?>
+            <div id="onoffbtn">
+                <div id="arrow"></div>
+                <div id="arrowtext">收起菜单</div>
+            </div>
+        </div>
+        <div id="rightbox">
+            <iframe id="main" name="main" frameborder="0" src="vrpano_main.php" scrolling="auto" />
+        </div>
+    </body>
+</html>

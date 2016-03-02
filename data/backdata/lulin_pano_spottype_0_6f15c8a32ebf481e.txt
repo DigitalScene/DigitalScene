@@ -1,0 +1,2 @@
+INSERT INTO `lulin_pano_spottype` VALUES('1','方向类型');
+INSERT INTO `lulin_pano_spottype` VALUES('2','功能类型');

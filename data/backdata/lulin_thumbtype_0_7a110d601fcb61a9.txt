@@ -1,0 +1,4 @@
+INSERT INTO `lulin_thumbtype` VALUES('1','默认缩略图-右下横向（关）');
+INSERT INTO `lulin_thumbtype` VALUES('2','默认缩略图-右下横向（开）');
+INSERT INTO `lulin_thumbtype` VALUES('3','经典缩略图');
+INSERT INTO `lulin_thumbtype` VALUES('4','缩略图&控制面板组合');

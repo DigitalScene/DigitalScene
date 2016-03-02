@@ -1,0 +1,2 @@
+INSERT INTO `lulin_admintype` VALUES('1','普通管理员','1','');
+INSERT INTO `lulin_admintype` VALUES('10','超级管理员','1','admin_AllowAll');
