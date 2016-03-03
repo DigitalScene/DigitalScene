@@ -12,7 +12,8 @@ $menuList = '
     </menu:top>
 ';
 
-if ($cuserLogin->getUserType() >= 10) {    
+//玛，我醉了，干嘛给他加个usertype
+//if ($cuserLogin->getUserType() >= 10) {
     $menuList .= '
     <menu:top id="3" name="系统参数"  icon="images/index/toolicon2.png">
         <menu:item name="系统基本参数" link="sys_info.php" target="main" rank="" />
@@ -21,6 +22,6 @@ if ($cuserLogin->getUserType() >= 10) {
         <menu:item name="数据库一键还原" link="sys_data_revert.php" target="main" rank="" />
     </menu:top>
     ';
-}
+//}
 
 ?>

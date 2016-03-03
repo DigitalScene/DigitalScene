@@ -14,6 +14,21 @@ require_once( LULINREQ."/class/mytag.class.php" );
 require_once( LULINADMIN."/inc/menu.php" );
 //左边菜单功能编写
 require_once( LULINADMIN."/inc/menu_function.php" );
+
+
+//这个什么时候得到一个已经赋值的user啦
+$cuserLogin = new userLogin( );
+
+//如果之前用户没有登录过，则session不会保存，所以当前user的userID为-1,则跳转到location:login.php?gotopage=admin/index.php,就是始终是登录界面
+//如果之前用户已经登录过，则session会保存user的信息，所以当前user的userID不为-1
+if ( $cuserLogin->getUserID( ) == -1 )
+{
+    //直接跳转到登录页面呀，不需要再到loginProcess里面啦
+//    header("location:../app/controller/loginProcess1.php");
+    header("location:../app/web/login.php");
+    exit( );
+}
+
 //跳转到index.html
 require( LULINADMIN."/template/index.htm" );
 exit( );

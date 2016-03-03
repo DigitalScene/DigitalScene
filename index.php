@@ -12,22 +12,11 @@ if ( !file_exists( dirname( __FILE__ )."/data/config.php" ) )
     exit( );
 }
 
-//定义css,img,js常量
-// define("SITE_URL", "http://localhost:8081/");
-//Home
-// define("CSS_URL", SITE_URL."admin/style/");//css
-// define("IMG_URL", SITE_URL."shop/Public/Home/img/");//img
-// define("JS_URL", SITE_URL."shop/Public/Home/js/");//js
-// //Admin
-// define("ADMIN_CSS_URL", SITE_URL."shop/Public/Admin/css/");//css
-// define("ADMIN_IMG_URL", SITE_URL."shop/Public/Admin/img/");//img
-// define("ADMIN_JS_URL", SITE_URL."shop/Public/Admin/js/");//js
 
-
-// require_once './ThinkPHP/ThinkPHP.php';
-// exit();
 //跳转到admin/index.php
-header( "Location:admin/index.php" );
+//header( "Location:admin/index.php" );
+header( "Location:./app/web/login.php" );
+//header( "Location:./app/web/login.php" );
 echo "\r\n";
 ?>
 

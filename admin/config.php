@@ -41,8 +41,12 @@ $cmspath = $cfg_cmspath;
 /* echo $cmspath;
 exit(); */
 
+
+/*
+ * 把这部分代码抽取出来
+ */
 //这个什么时候得到一个已经赋值的user啦
-$cuserLogin = new userLogin( );
+//$cuserLogin = new userLogin( );
 //这些user的属性数据好像跟数据库没有关系耶
 /* echo "UserID--".$cuserLogin->getUserID()," UserType->".$cuserLogin->getUserType()," Purview--".$cuserLogin->getPurview()," UserChannel--".$cuserLogin->getUserChannel()," UserName--".$cuserLogin->getUserName()," UserRank--".$cuserLogin->getUserRank();
 exit(); */
@@ -55,10 +59,10 @@ exit(); */
 // }
 //如果之前用户没有登录过，则session不会保存，所以当前user的userID为-1,则跳转到location:login.php?gotopage=admin/index.php,就是始终是登录界面
 //如果之前用户已经登录过，则session会保存user的信息，所以当前user的userID不为-1
-if ( $cuserLogin->getUserID( ) == -1 )
-{
-//     header( "location:login.php?gotopage=". $Nowurl."/hahaha你大爷" );
-    header("location:../app/controller/loginProcess.php");
-    exit( );
-}
+//if ( $cuserLogin->getUserID( ) == -1 )
+//{
+////     header( "location:login.php?gotopage=". $Nowurl."/hahaha你大爷" );
+//    header("location:../app/controller/loginProcess1.php");
+//    exit( );
+//}
 ?>
